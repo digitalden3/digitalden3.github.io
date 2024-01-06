@@ -231,3 +231,9 @@ aws dynamodb create-table \
     --profile terraform-user
     ```shell
 ````
+
+- `table-name:` Specifies the name of the DynamoDB table as terraform-locks. You can use a different name if desired
+- `attribute-definitions:` Defines the attributes of the DynamoDB table. In this case, you have an attribute named LockID with a type of string (S)
+- `key-schema:` Specifies the primary key of the table, which is LockID
+- `provisioned-throughput:` Sets the read and write capacity units for the DynamoDB table
+- `profile:` Ensures that the terraform-user AWS CLI profile is used for this specific command
