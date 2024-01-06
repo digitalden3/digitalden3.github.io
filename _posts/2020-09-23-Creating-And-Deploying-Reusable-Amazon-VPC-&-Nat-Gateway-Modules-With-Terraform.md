@@ -221,3 +221,13 @@ This setup is a crucial step in maintaining the integrity and reliability of you
 Creating a DynamoDB table for state locking is a best practice when working with Terraform, especially in collaborative or production environments. It adds a layer of control and coordination to Terraform operations, enhancing consistency, security, and overall reliability in managing your infrastructure as code.
 
 To create a DynamoDB table specifically for state locking. Run the aws dynamodb create-table command:
+
+````shell
+aws dynamodb create-table \
+    --table-name terraform-locks \
+    --attribute-definitions AttributeName=LockID,AttributeType=S \
+    --key-schema AttributeName=LockID,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    --profile terraform-user
+    ```shell
+````
